@@ -1,21 +1,25 @@
-//create grid container
+//create flex container
 const body = document.body;
 
-const gridContainer = document.createElement("div");
-gridContainer.setAttribute("class", "grid-container");
+const flexContainer = document.createElement("div");
+flexContainer.setAttribute("class", "flex-container");
+body.append(flexContainer);
 
-body.append(gridContainer);
+function createRow() {
+    let rowSize = 16;
+
+    for (let i = 0; i < rowSize; i++) {
+        const div = document.createElement("div");
+        flexContainer.append(div);
+    }
+}
 
 function createGrid() {
-    let gridsize = 5;
-    let cssGridSize = "grid-template-columns: ";
+    let gridSize = 16;
 
-    for (i = 0; i < gridsize; i++) {
-        const div = document.createElement("div");
-        gridContainer.append(div);
-        cssGridSize += "auto ";
+    for (let i = 0; i < gridSize; i++) {
+        createRow();
     }
-    console.log("i am hewrer")
 }
 
 createGrid();
