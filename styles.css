@@ -1,0 +1,10 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.grid-container div {
+    background-color: rgb(122, 160, 204);
+    border: 2px solid black;
+    height: 200px;
+}
