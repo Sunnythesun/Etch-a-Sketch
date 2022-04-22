@@ -3,7 +3,7 @@ const body = document.body;
 
 const flexContainer = document.createElement("div");
 
-flexContainer.setAttribute("class", "flex-container");
+flexContainer.setAttribute("id", "flex-container");
 body.append(flexContainer);
 
 function createRow() {
@@ -28,18 +28,23 @@ createGrid();
 
 
 //for mouseover/out colour change
-document.getElementById("gridDiv").addEventListener("mouseover", mouseOver);
-document.getElementById("gridDiv").addEventListener("mouseout", mouseOut);
 
-function mouseOver() {
-    this.style.backgroundColor = "green";
-    console.log("mouse OVER");
+function random(number) {
+    return Math.floor(Math.random() * number);
 }
 
-function mouseOut() {
-    this.style.backgroundColor = "red";
-    console.log("mouse OUT");
+function colorChange() {
+    const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+    return rndCol;
 }
+
+const container = document.getElementById("flex-container");
+
+container.addEventListener('mouseover', event => event.target.style.backgroundColor = colorChange());
+container.addEventListener('mouseout', event => event.target.style.backgroundColor = colorChange());
+
+
+
 
 
 
