@@ -1,6 +1,5 @@
 //create flex container
 const body = document.body;
-
 const flexContainer = document.createElement("div");
 
 flexContainer.setAttribute("id", "flex-container");
@@ -26,9 +25,7 @@ function createGrid() {
 
 createGrid();
 
-
-//for mouseover/out colour change
-
+//for mouseover/out colour change using bubbling
 function random(number) {
     return Math.floor(Math.random() * number);
 }
@@ -38,10 +35,23 @@ function colorChange() {
     return rndCol;
 }
 
-const container = document.getElementById("flex-container");
+function onMouse(event) {
+    event.target.style.backgroundColor = colorChange();
+}
 
-container.addEventListener('mouseover', event => event.target.style.backgroundColor = colorChange());
-container.addEventListener('mouseout', event => event.target.style.backgroundColor = colorChange());
+//to reset all squares
+
+function reset() {
+    location.reload()
+}
+
+document.getElementById("flex-container").onmouseover = onMouse;
+document.getElementById("flex-container").onmouseout = onMouse;
+document.getElementById("reset").onclick = reset;
+
+
+
+
 
 
 
