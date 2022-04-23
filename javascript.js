@@ -2,13 +2,17 @@
 const body = document.body;
 const flexContainer = document.createElement("div");
 
+//let gridSize = 16;
+
+//to check if grid has been created, so start button can't be used more than once
+let gridCreated = 0;
+
 flexContainer.setAttribute("id", "flex-container");
 body.append(flexContainer);
 
-function createRow() {
-    let rowSize = 16;
 
-    for (let i = 0; i < rowSize; i++) {
+function createRow() {
+    for (let i = 0; i < gridSize; i++) {
         const div = document.createElement("div");
         div.setAttribute("id", "gridDiv");
         flexContainer.append(div);
@@ -16,14 +20,12 @@ function createRow() {
 }
 
 function createGrid() {
-    let gridSize = 16;
-
     for (let i = 0; i < gridSize; i++) {
         createRow();
     }
 }
 
-createGrid();
+//createGrid();
 
 //for mouseover/out colour change using bubbling
 function random(number) {
@@ -45,9 +47,23 @@ function reset() {
     location.reload()
 }
 
+function start() {
+    if (gridCreated == 0) {
+        let sizeChoice = prompt("Please enter grid size");
+
+        if (sizeChoice >= 5 && sizeChoice <= 100) {
+            gridSize = parseInt(sizeChoice);
+            console.log(gridSize);
+            createGrid();
+            gridCreated = 1;
+        }
+    }
+}
+
 document.getElementById("flex-container").onmouseover = onMouse;
 document.getElementById("flex-container").onmouseout = onMouse;
 document.getElementById("reset").onclick = reset;
+document.getElementById("start").onclick = start;
 
 
 
