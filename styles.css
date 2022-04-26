@@ -5,8 +5,9 @@
 
 #flex-container div {
     background-color: rgb(122, 160, 204);
+    box-sizing: border-box;
     border: 2px solid black;
-    width: 5.8%;
+    width: 0;
     aspect-ratio: 1/1;
     flex: 1 1 auto;
 }
