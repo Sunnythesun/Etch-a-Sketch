@@ -64,6 +64,10 @@ function start() {
                 allSquares[i].style.width = width + "%";
             }
         }
+        else {
+            alert("Please select number in between 5 and 100");
+            location.reload()
+        }
     }
 }
 

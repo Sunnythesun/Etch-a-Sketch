@@ -1,10 +1,12 @@
 #flex-container {
     display: flex;
     flex-wrap: wrap;
+    /* width: 75%;
+    align-items: center; */
 }
 
 #flex-container div {
-    background-color: rgb(122, 160, 204);
+    background-color: rgb(145, 185, 231);
     box-sizing: border-box;
     border: 2px solid black;
     width: 0;
@@ -13,5 +15,5 @@
 }
 
 #button {
-    text-align: center
+    text-align: center;
 }
