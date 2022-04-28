@@ -7,6 +7,10 @@ let gridCreated = 0;
 
 let gridSize = 0;
 
+let divClass;  //changes on mouseover to determine function action
+
+let r, g, b; //variables to store color for shading functionality
+
 flexContainer.setAttribute("id", "flex-container");
 body.append(flexContainer);
 
@@ -30,13 +34,53 @@ function random(number) {
     return Math.floor(Math.random() * number);
 }
 
+//change color or increase shading depending on class
 function colorChange() {
     const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
     return rndCol;
 }
 
 function onMouse(event) {
-    event.target.style.backgroundColor = colorChange();
+
+    divClass = event.target.className;
+
+    if (divClass === "gridDiv") {
+        event.target.style.backgroundColor = colorChange();
+        event.target.setAttribute("class", "coloredDiv"); //change class for shading functionality
+    }
+    else if (divClass === "coloredDiv") {
+        //event.target.style.backgroundColor = "rgb(0, 0, 0)";
+        let color = event.target.style.backgroundColor;
+        console.log(color);
+
+        //to darken color every mouseOver
+        //use string functions to get each rgb value, and convert to int
+        let index1 = color.indexOf("(") + 1;
+        let index2 = color.indexOf(",");
+        let removeMe = color.substring(0, index2 + 2);
+
+        let r = color.substring(index1, index2);   //r2 is not inclusive for some reason, but r1 is
+
+        color = color.replace(removeMe, "");
+
+        index1 = color.indexOf(",");
+        let g = color.substring("0", index1);
+        removeMe = color.substring(0, index1 + 2);
+        color = color.replace(removeMe, "");
+
+        let b = color.substring(0, color.length - 1);
+
+        //darken each rgb value by 10% and set as new div color
+        r = parseInt(r) - r / 10;
+        g = parseInt(g) - g / 10;
+        b = parseInt(b) - b / 10;
+
+        let rgb = r + "," + g + "," + b;
+
+        console.log(rgb);
+        event.target.style.backgroundColor = "rgb" + "(" + rgb + ")";
+
+    }
 }
 
 //to reset all squares
@@ -72,7 +116,7 @@ function start() {
 }
 
 document.getElementById("flex-container").onmouseover = onMouse;
-document.getElementById("flex-container").onmouseout = onMouse;
+//document.getElementById("flex-container").onmouseout = onMouse;
 document.getElementById("reset").onclick = reset;
 document.getElementById("start").onclick = start;
 
