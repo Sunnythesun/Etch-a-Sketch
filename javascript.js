@@ -9,8 +9,6 @@ let gridSize = 0;
 
 let divClass;  //changes on mouseover to determine function action
 
-let r, g, b; //variables to store color for shading functionality
-
 flexContainer.setAttribute("id", "flex-container");
 body.append(flexContainer);
 
@@ -49,9 +47,7 @@ function onMouse(event) {
         event.target.setAttribute("class", "coloredDiv"); //change class for shading functionality
     }
     else if (divClass === "coloredDiv") {
-        //event.target.style.backgroundColor = "rgb(0, 0, 0)";
         let color = event.target.style.backgroundColor;
-        console.log(color);
 
         //to darken color every mouseOver
         //use string functions to get each rgb value, and convert to int
