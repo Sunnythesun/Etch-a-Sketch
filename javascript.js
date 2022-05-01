@@ -27,34 +27,46 @@ ui.setAttribute("id", "ui");
 uiContainer.append(ui);
 
 
-//buttons to start/reset/switch modes  (functions applied at bottom)
+//buttons in divs to start/reset/switch modes  (functions applied at bottom)
+const startButtonDiv = document.createElement("div");
 const startButton = document.createElement("button");
-ui.append(startButton);
+ui.append(startButtonDiv);
+startButtonDiv.append(startButton);
 startButton.setAttribute("id", "start");
 startButton.innerText = "Start";
 
+const resetButtonDiv = document.createElement("div");
 const resetButton = document.createElement("button");
-ui.append(resetButton);
+ui.append(resetButtonDiv);
+resetButtonDiv.append(resetButton);
 resetButton.setAttribute("id", "reset");
 resetButton.innerText = "Reset";
 
+const blackButtonDiv = document.createElement("div");
 const blackButton = document.createElement("button");
-ui.append(blackButton);
+ui.append(blackButtonDiv);
+blackButtonDiv.append(blackButton);
 blackButton.setAttribute("id", "black");
 blackButton.innerText = "Black";
 
+const rainbowButtonDiv = document.createElement("div");
 const rainbowButton = document.createElement("button");
-ui.append(rainbowButton);
+ui.append(rainbowButtonDiv);
+rainbowButtonDiv.append(rainbowButton);
 rainbowButton.setAttribute("id", "rainbow");
 rainbowButton.innerText = "Rainbow";
 
+const eraserButtonDiv = document.createElement("div");
 const eraserButton = document.createElement("button");
-ui.append(eraserButton);
+ui.append(eraserButtonDiv);
+eraserButtonDiv.append(eraserButton);
 eraserButton.setAttribute("id", "eraser");
 eraserButton.innerText = "Eraser";
 
+const shadeButtonDiv = document.createElement("div");
 const shadeButton = document.createElement("button");
-ui.append(shadeButton);
+ui.append(shadeButtonDiv);
+shadeButtonDiv.append(shadeButton);
 shadeButton.setAttribute("id", "shade");
 shadeButton.innerText = "Shade";
 
@@ -94,7 +106,7 @@ function onMouse(event) {
     if (divClass === "gridDiv" && mode === "rainbow") {
         event.target.style.backgroundColor = colorChange();
     }
-    else if (divClass === "gridDiv" && mode === "shade" && event.target.style.backgroundColor != "rgb(255, 255, 255)") {
+    else if (divClass === "gridDiv" && mode === "shade") {
 
         let color = event.target.style.backgroundColor;
 
@@ -115,9 +127,9 @@ function onMouse(event) {
         let b = color.substring(0, color.length - 1);
 
         //darken each rgb value by 10% and set as new div color
-        r = parseInt(r) - r / 10;
-        g = parseInt(g) - g / 10;
-        b = parseInt(b) - b / 10;
+        r = parseInt(r) - r / 20;
+        g = parseInt(g) - g / 20;
+        b = parseInt(b) - b / 20;
 
         let rgb = r + "," + g + "," + b;
 
@@ -143,9 +155,9 @@ function start() {
         let width = 0;
         gridCreated = 1;
 
-        let sizeChoice = prompt("Please enter number of rows/columns in between 5-100");
+        let sizeChoice = prompt("Please enter number of rows/columns in between 15-100");
 
-        if (sizeChoice >= 5 && sizeChoice <= 100) {
+        if (sizeChoice >= 15 && sizeChoice <= 100) {
             gridSize = parseInt(sizeChoice);
             width = 100 / sizeChoice;
 
@@ -158,7 +170,7 @@ function start() {
             }
         }
         else {
-            alert("Please select number in between 5 and 100");
+            alert("Please select number in between 15 and 100");
             location.reload()
         }
     }

@@ -1,6 +1,11 @@
+body {
+    background-color: rgb(238, 238, 238);
+}
+
 h1 {
     text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 300%;
     color: rgb(46, 63, 104);
 }
 
@@ -19,8 +24,6 @@ h1 {
 #uiContainer {
     display: flex;
     flex-direction: column;
-    /* flex: 1; */
-    /* border: 2px solid rgb(151, 60, 60); */
 }
 
 #flex-con-container div {
@@ -35,4 +38,8 @@ h1 {
     width: 0;
     aspect-ratio: 1/1;
     flex: 1 0 auto;
+}
+
+#uiContainer div {
+    padding: 10%;
 }
