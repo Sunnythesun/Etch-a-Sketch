@@ -10,7 +10,7 @@ let gridCreated = 0;
 let gridSize = 0;
 
 let divClass;  //changes on mouseover to determine function action
-let mode = "rainbow";
+let mode = "black";
 
 let r, g, b; //used for getRGB function
 
